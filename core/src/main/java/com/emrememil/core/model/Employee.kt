@@ -11,11 +11,11 @@ data class Employee(
     val uid: Long,
 
     @ColumnInfo(name = "name")
-    val name: String,
+    val name: String?,
 
     @ColumnInfo(name = "photo")
-    val photo: String,
+    val photo: String?,
 
     @ColumnInfo(name = "address")
-    val adress: String
+    val adress: String?
 )

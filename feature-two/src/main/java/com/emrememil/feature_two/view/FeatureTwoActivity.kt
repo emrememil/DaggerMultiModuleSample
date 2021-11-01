@@ -32,8 +32,8 @@ class FeatureTwoActivity : AppCompatActivity() {
         }
 
         btnShowEmployee.setOnClickListener {
-            val name = employeeDao.getFirstEmployee().name
-            Toast.makeText(this, name, Toast.LENGTH_LONG).show()
+            val name = employeeDao.getFirstEmployee()?.name
+            Toast.makeText(this, name ?: "Employee Not Found", Toast.LENGTH_LONG).show()
         }
     }
 }

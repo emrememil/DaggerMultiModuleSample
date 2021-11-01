@@ -3,6 +3,7 @@ package com.emrememil.feature_three.di
 import com.emrememil.core.di.CoreComponent
 import com.emrememil.core.di.scopes.FeatureScope
 import com.emrememil.feature_three.view.FeatureThreeActivity
+import com.emrememil.feature_three.view.FeatureThreeFragment
 import dagger.Component
 
 @FeatureScope
@@ -12,4 +13,5 @@ import dagger.Component
 )
 interface FeatureThreeComponent {
     fun inject(activity: FeatureThreeActivity)
+    fun injectFeatureThreeFragment(fragment: FeatureThreeFragment)
 }

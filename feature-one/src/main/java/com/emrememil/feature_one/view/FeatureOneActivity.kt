@@ -2,6 +2,7 @@ package com.emrememil.feature_one.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.emrememil.core.database.dao.EmployeeDao
 import com.emrememil.core.model.Employee
 import com.emrememil.core.utils.InjectUtils
@@ -27,6 +28,7 @@ class FeatureOneActivity : AppCompatActivity() {
 
         btnAddEmployee.setOnClickListener {
             employeeDao.insert(Employee(1, "Emre", "", "Ankara/Turkey"))
+            Toast.makeText(this, "Employee added. Name: Emre", Toast.LENGTH_LONG).show()
         }
     }
 }

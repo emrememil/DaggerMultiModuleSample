@@ -7,5 +7,5 @@ import com.emrememil.core.model.Employee
 @Dao
 interface EmployeeDao : BaseDao<Employee> {
     @Query ("Select * from Employee WHERE uid = 1")
-    fun getFirstEmployee(): Employee
+    fun getFirstEmployee(): Employee?
 }
