@@ -1,0 +1,14 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+rootProject.name = "DaggerMultiModuleSample"
+include ':app'
+include ':core'
+include ':feature-one'
+include ':feature-two'
+include ':feature-three'
