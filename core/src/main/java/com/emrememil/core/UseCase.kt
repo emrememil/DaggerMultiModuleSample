@@ -1,4 +1,4 @@
-package com.emrememil.domain.utils
+package com.emrememil.core
 
 abstract class UseCase<in P, R> {
 

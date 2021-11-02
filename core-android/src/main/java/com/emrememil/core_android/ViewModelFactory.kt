@@ -1,4 +1,4 @@
-package com.emrememil.domain.utils
+package com.emrememil.core_android
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

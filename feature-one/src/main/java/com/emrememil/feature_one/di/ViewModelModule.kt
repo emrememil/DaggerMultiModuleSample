@@ -3,7 +3,7 @@ package com.emrememil.feature_one.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.emrememil.domain.di.scopes.ViewModelKey
-import com.emrememil.domain.utils.ViewModelFactory
+import com.emrememil.core_android.ViewModelFactory
 import com.emrememil.feature_one.viewmodel.FeatureOneViewModel
 import dagger.Binds
 import dagger.Module

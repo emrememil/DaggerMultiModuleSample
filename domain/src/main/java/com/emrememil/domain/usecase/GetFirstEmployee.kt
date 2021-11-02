@@ -1,9 +1,9 @@
 package com.emrememil.domain.usecase
 
 import android.util.Log
+import com.emrememil.core.UseCase
 import com.emrememil.domain.model.Employee
 import com.emrememil.domain.repo.employee.EmployeeRepository
-import com.emrememil.domain.utils.UseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

@@ -47,6 +47,8 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:2.35.1"
 
     implementation project(':domain')
+    implementation project(':core')
+    implementation project(':core-android')
     implementation project(':feature-one')
     implementation project(':feature-two')
     implementation project(':feature-three')

@@ -1,4 +1,4 @@
-package com.emrememil.domain.extensions
+package com.emrememil.core.extensions
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
