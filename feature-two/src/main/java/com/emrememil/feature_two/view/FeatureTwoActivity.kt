@@ -4,18 +4,19 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.emrememil.core.database.dao.EmployeeDao
+import com.emrememil.core.usecase.GetFirstEmployee
 import com.emrememil.core.utils.InjectUtils
 import com.emrememil.feature_three.view.FeatureThreeActivity
 import com.emrememil.feature_two.R
 import com.emrememil.feature_two.di.DaggerFeatureTwoComponent
 import kotlinx.android.synthetic.main.activity_feature_two.*
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class FeatureTwoActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var employeeDao: EmployeeDao
+    lateinit var getFirstEmployee: GetFirstEmployee
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +33,10 @@ class FeatureTwoActivity : AppCompatActivity() {
         }
 
         btnShowEmployee.setOnClickListener {
-            val name = employeeDao.getFirstEmployee()?.name
+            var name: String?
+            runBlocking {
+                name = getFirstEmployee(Any())?.name
+            }
             Toast.makeText(this, name ?: "Employee Not Found", Toast.LENGTH_LONG).show()
         }
     }

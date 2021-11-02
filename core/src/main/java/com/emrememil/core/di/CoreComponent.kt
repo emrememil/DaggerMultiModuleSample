@@ -1,9 +1,10 @@
 package com.emrememil.core.di
 
 import android.content.Context
-import com.emrememil.core.database.dao.EmployeeDao
 import com.emrememil.core.di.modules.ContextModule
 import com.emrememil.core.di.modules.DatabaseModule
+import com.emrememil.core.di.modules.ReposModule
+import com.emrememil.core.repo.employee.EmployeeRepository
 import dagger.Component
 import javax.inject.Singleton
 
@@ -11,7 +12,8 @@ import javax.inject.Singleton
 @Component(
     modules = [
         ContextModule::class,
-        DatabaseModule::class
+        DatabaseModule::class,
+        ReposModule::class
     ]
 )
 interface CoreComponent {
@@ -23,9 +25,9 @@ interface CoreComponent {
     fun context(): Context
 
     /**
-     * Provide dependency graph EmployeeDao
+     * Provide dependency graph EmployeeRepository
      *
-     * @return EmployeeDao
+     * @return EmployeeRepository
      */
-    fun employeeDao(): EmployeeDao
+    fun employeeRepo(): EmployeeRepository
 }
