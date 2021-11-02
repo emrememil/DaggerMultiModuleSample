@@ -1,15 +1,15 @@
 package com.emrememil.daggermultimodulesample
 
 import android.app.Application
-import com.emrememil.domain.di.CoreComponent
-import com.emrememil.domain.di.CoreComponentProvider
-import com.emrememil.domain.di.DaggerCoreComponent
+import com.emrememil.domain.di.MainComponent
+import com.emrememil.domain.di.MainComponentProvider
+import com.emrememil.domain.di.DaggerMainComponent
 import com.emrememil.domain.di.modules.ContextModule
 import com.emrememil.daggermultimodulesample.di.DaggerAppComponent
 
-class SampleApp : Application(), CoreComponentProvider {
+class SampleApp : Application(), MainComponentProvider {
 
-    lateinit var coreComponent: CoreComponent
+    lateinit var mainComponent: MainComponent
 
     override fun onCreate() {
         super.onCreate()
@@ -24,7 +24,7 @@ class SampleApp : Application(), CoreComponentProvider {
     private fun initAppDependencyInjection() {
         DaggerAppComponent
             .builder()
-            .coreComponent(coreComponent)
+            .mainComponent(mainComponent)
             .build()
             .inject(this)
     }
@@ -33,14 +33,14 @@ class SampleApp : Application(), CoreComponentProvider {
      * Initialize core dependency injection component.
      */
     private fun initCoreDependencyInjection() {
-        coreComponent = DaggerCoreComponent
+        mainComponent = DaggerMainComponent
             .builder()
             .contextModule(ContextModule(this))
             .build()
     }
 
-    override fun provideCoreComponent(): CoreComponent {
-        return coreComponent
+    override fun provideMainComponent(): MainComponent {
+        return mainComponent
     }
 
 }

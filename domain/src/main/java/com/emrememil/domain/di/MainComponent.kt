@@ -16,7 +16,7 @@ import javax.inject.Singleton
         ReposModule::class
     ]
 )
-interface CoreComponent {
+interface MainComponent {
     /**
      * Provide dependency graph Context
      *

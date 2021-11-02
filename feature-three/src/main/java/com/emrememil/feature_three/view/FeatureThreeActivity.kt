@@ -26,7 +26,7 @@ class FeatureThreeActivity : AppCompatActivity() {
 
         DaggerFeatureThreeComponent
             .builder()
-            .coreComponent(InjectUtils.provideAppComponent(applicationContext))
+            .mainComponent(InjectUtils.provideAppComponent(applicationContext))
             .build()
             .inject(this)
 

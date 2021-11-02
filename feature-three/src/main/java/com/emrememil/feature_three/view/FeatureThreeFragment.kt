@@ -30,7 +30,7 @@ class FeatureThreeFragment : Fragment() {
         super.onAttach(context)
         DaggerFeatureThreeComponent
             .builder()
-            .coreComponent(InjectUtils.provideAppComponent(requireContext().applicationContext))
+            .mainComponent(InjectUtils.provideAppComponent(requireContext().applicationContext))
             .build()
             .injectFeatureThreeFragment(this)
 

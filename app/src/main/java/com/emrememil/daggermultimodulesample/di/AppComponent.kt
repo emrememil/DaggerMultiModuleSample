@@ -1,13 +1,13 @@
 package com.emrememil.daggermultimodulesample.di
 
-import com.emrememil.domain.di.CoreComponent
+import com.emrememil.domain.di.MainComponent
 import com.emrememil.domain.di.scopes.AppScope
 import com.emrememil.daggermultimodulesample.SampleApp
 import dagger.Component
 
 @AppScope
 @Component(
-    dependencies = [CoreComponent::class],
+    dependencies = [MainComponent::class],
     modules = [AppModule::class]
 )
 interface AppComponent {

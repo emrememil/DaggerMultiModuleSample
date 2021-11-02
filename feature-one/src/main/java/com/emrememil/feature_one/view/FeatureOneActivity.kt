@@ -25,7 +25,7 @@ class FeatureOneActivity : AppCompatActivity() {
 
         DaggerFeatureOneComponent
             .builder()
-            .coreComponent(InjectUtils.provideAppComponent(applicationContext))
+            .mainComponent(InjectUtils.provideAppComponent(applicationContext))
             .build()
             .inject(this)
 

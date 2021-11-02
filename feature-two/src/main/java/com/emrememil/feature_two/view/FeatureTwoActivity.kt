@@ -24,7 +24,7 @@ class FeatureTwoActivity : AppCompatActivity() {
 
         DaggerFeatureTwoComponent
             .builder()
-            .coreComponent(InjectUtils.provideAppComponent(applicationContext))
+            .mainComponent(InjectUtils.provideAppComponent(applicationContext))
             .build()
             .inject(this)
 
