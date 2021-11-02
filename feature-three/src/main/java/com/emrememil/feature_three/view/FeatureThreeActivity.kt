@@ -3,12 +3,23 @@ package com.emrememil.feature_three.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import com.emrememil.core.extensions.viewModelProvider
 import com.emrememil.core.utils.InjectUtils
 import com.emrememil.feature_three.R
 import com.emrememil.feature_three.di.DaggerFeatureThreeComponent
+import com.emrememil.feature_three.viewmodel.FeatureThreeViewModel
 import kotlinx.android.synthetic.main.activity_feature_three.*
+import javax.inject.Inject
 
 class FeatureThreeActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private lateinit var viewModel: FeatureThreeViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feature_three)
@@ -18,6 +29,29 @@ class FeatureThreeActivity : AppCompatActivity() {
             .coreComponent(InjectUtils.provideAppComponent(applicationContext))
             .build()
             .inject(this)
+
+        viewModel = viewModelProvider(viewModelFactory)
+
+        viewModel.addedEmployee.observe(this, {
+            if (it != null) {
+                Toast.makeText(
+                    this,
+                    "Employee Added. Name: ${it.name}",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                Toast.makeText(
+                    this,
+                    "Could not add employee",
+                    Toast.LENGTH_LONG
+                ).show()
+
+            }
+        })
+
+        btnAddEmployee.setOnClickListener {
+            viewModel.addNewEmployee()
+        }
 
         btnFeatureThreeFragment.setOnClickListener {
             supportFragmentManager.beginTransaction()
@@ -29,6 +63,7 @@ class FeatureThreeActivity : AppCompatActivity() {
 
             textViewThree.visibility = View.GONE
             btnFeatureThreeFragment.visibility = View.GONE
+            btnAddEmployee.visibility = View.GONE
         }
     }
 
@@ -37,6 +72,7 @@ class FeatureThreeActivity : AppCompatActivity() {
             supportFragmentManager.popBackStackImmediate()
             textViewThree.visibility = View.VISIBLE
             btnFeatureThreeFragment.visibility = View.VISIBLE
+            btnAddEmployee.visibility = View.VISIBLE
         } else {
             super.onBackPressed()
         }

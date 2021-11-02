@@ -9,7 +9,7 @@ import dagger.Component
 @FeatureScope
 @Component(
     dependencies = [CoreComponent::class],
-    modules = [FeatureThreeModule::class]
+    modules = [FeatureThreeModule::class, ViewModelModule::class]
 )
 interface FeatureThreeComponent {
     fun inject(activity: FeatureThreeActivity)

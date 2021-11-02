@@ -3,20 +3,21 @@ package com.emrememil.feature_one.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.emrememil.core.model.Employee
-import com.emrememil.core.usecase.AddEmployee
+import androidx.lifecycle.ViewModelProvider
+import com.emrememil.core.extensions.viewModelProvider
 import com.emrememil.core.utils.InjectUtils
 import com.emrememil.feature_one.R
 import com.emrememil.feature_one.di.DaggerFeatureOneComponent
+import com.emrememil.feature_one.viewmodel.FeatureOneViewModel
 import kotlinx.android.synthetic.main.activity_feature_one.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class FeatureOneActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var addEmployee: AddEmployee
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private lateinit var viewModel: FeatureOneViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +29,27 @@ class FeatureOneActivity : AppCompatActivity() {
             .build()
             .inject(this)
 
-        btnAddEmployee.setOnClickListener {
-            GlobalScope.launch {
-                addEmployee(Employee(1, "Emre", "", "Ankara/Turkey"))
+        viewModel = viewModelProvider(viewModelFactory)
+
+        viewModel.addedEmployee.observe(this, {
+            if (it != null) {
+                Toast.makeText(
+                    this,
+                    "Employee Added. Name: ${it.name}",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                Toast.makeText(
+                    this,
+                    "Could not add employee",
+                    Toast.LENGTH_LONG
+                ).show()
+
             }
-            Toast.makeText(this, "Employee added. Name: Emre", Toast.LENGTH_LONG).show()
+        })
+
+        btnAddEmployee.setOnClickListener {
+            viewModel.addNewEmployee()
         }
     }
 }

@@ -1,23 +1,19 @@
-package com.emrememil.feature_three.viewmodel
+package com.emrememil.feature_one.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.emrememil.core.model.Employee
 import com.emrememil.core.usecase.AddEmployee
-import com.emrememil.core.usecase.GetFirstEmployee
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class FeatureThreeViewModel @Inject constructor(
-    val addEmployee: AddEmployee,
-    val getFirstEmployee: GetFirstEmployee
+class FeatureOneViewModel @Inject constructor(
+    val addEmployee: AddEmployee
 ) : ViewModel() {
-
     val addedEmployee = MutableLiveData<Employee?>()
-    val firstEmployee = MutableLiveData<Employee?>()
 
     fun addNewEmployee() {
         GlobalScope.launch {
@@ -31,15 +27,6 @@ class FeatureThreeViewModel @Inject constructor(
                 } else {
                     addedEmployee.value = null
                 }
-            }
-        }
-    }
-
-    fun getFirstEmployeeFromDB() {
-        GlobalScope.launch {
-            withContext(Dispatchers.Main) {
-                val result = getFirstEmployee(Any())
-                firstEmployee.value = result
             }
         }
     }

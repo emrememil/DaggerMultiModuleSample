@@ -7,12 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.emrememil.core.usecase.GetFirstEmployee
 import com.emrememil.core.utils.InjectUtils
 import com.emrememil.feature_three.R
 import com.emrememil.feature_three.di.DaggerFeatureThreeComponent
 import com.emrememil.feature_three.viewmodel.FeatureThreeViewModel
-import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 
@@ -21,7 +22,9 @@ class FeatureThreeFragment : Fragment() {
     @Inject
     lateinit var getFirstEmployee: GetFirstEmployee
 
-    private lateinit var viewModel: FeatureThreeViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel: FeatureThreeViewModel by viewModels { viewModelFactory }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -36,16 +39,15 @@ class FeatureThreeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.getFirstEmployeeFromDB()
 
-
-        runBlocking {
+        viewModel.firstEmployee.observe(viewLifecycleOwner, {
             Toast.makeText(
                 requireContext(),
-                getFirstEmployee(Any())?.name ?: "Employee Not Found",
+                it?.name ?: "Employee Not Found",
                 Toast.LENGTH_LONG
-            )
-                .show()
-        }
+            ).show()
+        })
     }
 
     override fun onCreateView(
