@@ -1,7 +1,7 @@
 package com.emrememil.feature_two.di
 
-import com.emrememil.core.di.CoreComponent
-import com.emrememil.core.di.scopes.FeatureScope
+import com.emrememil.domain.di.CoreComponent
+import com.emrememil.domain.di.scopes.FeatureScope
 import com.emrememil.feature_two.view.FeatureTwoActivity
 import dagger.Component
 

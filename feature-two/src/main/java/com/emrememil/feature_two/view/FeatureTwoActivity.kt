@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.emrememil.core.usecase.GetFirstEmployee
-import com.emrememil.core.utils.InjectUtils
+import com.emrememil.domain.usecase.GetFirstEmployee
+import com.emrememil.domain.utils.InjectUtils
 import com.emrememil.feature_three.view.FeatureThreeActivity
 import com.emrememil.feature_two.R
 import com.emrememil.feature_two.di.DaggerFeatureTwoComponent

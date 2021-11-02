@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.emrememil.core.usecase.GetFirstEmployee
-import com.emrememil.core.utils.InjectUtils
+import com.emrememil.domain.usecase.GetFirstEmployee
+import com.emrememil.domain.utils.InjectUtils
 import com.emrememil.feature_three.R
 import com.emrememil.feature_three.di.DaggerFeatureThreeComponent
 import com.emrememil.feature_three.viewmodel.FeatureThreeViewModel

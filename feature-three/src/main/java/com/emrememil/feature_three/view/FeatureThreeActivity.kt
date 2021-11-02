@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.emrememil.core.extensions.viewModelProvider
-import com.emrememil.core.utils.InjectUtils
+import com.emrememil.domain.extensions.viewModelProvider
+import com.emrememil.domain.utils.InjectUtils
 import com.emrememil.feature_three.R
 import com.emrememil.feature_three.di.DaggerFeatureThreeComponent
 import com.emrememil.feature_three.viewmodel.FeatureThreeViewModel

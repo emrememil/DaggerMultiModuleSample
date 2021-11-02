@@ -8,7 +8,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "DaggerMultiModuleSample"
 include ':app'
-include ':core'
+include ':domain'
 include ':feature-one'
 include ':feature-two'
 include ':feature-three'

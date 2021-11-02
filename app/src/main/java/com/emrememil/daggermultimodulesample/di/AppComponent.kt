@@ -1,7 +1,7 @@
 package com.emrememil.daggermultimodulesample.di
 
-import com.emrememil.core.di.CoreComponent
-import com.emrememil.core.di.scopes.AppScope
+import com.emrememil.domain.di.CoreComponent
+import com.emrememil.domain.di.scopes.AppScope
 import com.emrememil.daggermultimodulesample.SampleApp
 import dagger.Component
 

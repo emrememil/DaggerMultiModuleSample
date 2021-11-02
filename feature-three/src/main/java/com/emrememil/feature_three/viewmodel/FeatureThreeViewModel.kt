@@ -2,9 +2,9 @@ package com.emrememil.feature_three.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.emrememil.core.model.Employee
-import com.emrememil.core.usecase.AddEmployee
-import com.emrememil.core.usecase.GetFirstEmployee
+import com.emrememil.domain.model.Employee
+import com.emrememil.domain.usecase.AddEmployee
+import com.emrememil.domain.usecase.GetFirstEmployee
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

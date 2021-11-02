@@ -1,11 +1,10 @@
 package com.emrememil.daggermultimodulesample
 
 import android.app.Application
-import android.content.Context
-import com.emrememil.core.di.CoreComponent
-import com.emrememil.core.di.CoreComponentProvider
-import com.emrememil.core.di.DaggerCoreComponent
-import com.emrememil.core.di.modules.ContextModule
+import com.emrememil.domain.di.CoreComponent
+import com.emrememil.domain.di.CoreComponentProvider
+import com.emrememil.domain.di.DaggerCoreComponent
+import com.emrememil.domain.di.modules.ContextModule
 import com.emrememil.daggermultimodulesample.di.DaggerAppComponent
 
 class SampleApp : Application(), CoreComponentProvider {
