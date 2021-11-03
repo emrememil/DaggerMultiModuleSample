@@ -13,6 +13,7 @@ import com.emrememil.domain.usecase.GetFirstEmployee
 import com.emrememil.domain.utils.InjectUtils
 import com.emrememil.feature_three.R
 import com.emrememil.feature_three.di.DaggerFeatureThreeComponent
+import com.emrememil.feature_three.di.FeatureThreeModule
 import com.emrememil.feature_three.viewmodel.FeatureThreeViewModel
 import javax.inject.Inject
 
@@ -22,15 +23,19 @@ class FeatureThreeFragment : Fragment() {
     @Inject
     lateinit var getFirstEmployee: GetFirstEmployee
 
+//    @Inject
+//    lateinit var viewModelFactory: ViewModelProvider.Factory
+//    private val viewModel: FeatureThreeViewModel by viewModels { viewModelFactory }
+
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel: FeatureThreeViewModel by viewModels { viewModelFactory }
+    lateinit var viewModel: FeatureThreeViewModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         DaggerFeatureThreeComponent
             .builder()
             .mainComponent(InjectUtils.provideAppComponent(requireContext().applicationContext))
+            .featureThreeModule(FeatureThreeModule(this))
             .build()
             .injectFeatureThreeFragment(this)
 

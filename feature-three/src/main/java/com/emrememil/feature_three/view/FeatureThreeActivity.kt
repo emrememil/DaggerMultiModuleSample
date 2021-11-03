@@ -9,16 +9,18 @@ import com.emrememil.core.extensions.viewModelProvider
 import com.emrememil.domain.utils.InjectUtils
 import com.emrememil.feature_three.R
 import com.emrememil.feature_three.di.DaggerFeatureThreeComponent
+import com.emrememil.feature_three.di.FeatureThreeModule
 import com.emrememil.feature_three.viewmodel.FeatureThreeViewModel
 import kotlinx.android.synthetic.main.activity_feature_three.*
 import javax.inject.Inject
 
 class FeatureThreeActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+//    @Inject
+//    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var viewModel: FeatureThreeViewModel
+    @Inject
+    lateinit var viewModel: FeatureThreeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,10 +29,11 @@ class FeatureThreeActivity : AppCompatActivity() {
         DaggerFeatureThreeComponent
             .builder()
             .mainComponent(InjectUtils.provideAppComponent(applicationContext))
+            .featureThreeModule(FeatureThreeModule(this))
             .build()
             .inject(this)
 
-        viewModel = viewModelProvider(viewModelFactory)
+//        viewModel = viewModelProvider(viewModelFactory)
 
         viewModel.addedEmployee.observe(this, {
             if (it != null) {
