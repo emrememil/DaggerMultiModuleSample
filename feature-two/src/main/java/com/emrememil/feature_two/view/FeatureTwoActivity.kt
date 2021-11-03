@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.widget.Toast
 import com.emrememil.domain.usecase.GetFirstEmployee
 import com.emrememil.domain.utils.InjectUtils
-import com.emrememil.feature_three.view.FeatureThreeActivity
 import com.emrememil.feature_two.R
 import com.emrememil.feature_two.di.DaggerFeatureTwoComponent
+import com.gaelmarhic.quadrant.QuadrantConstants
 import kotlinx.android.synthetic.main.activity_feature_two.*
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
@@ -29,7 +29,9 @@ class FeatureTwoActivity : AppCompatActivity() {
             .inject(this)
 
         btnFeatureThree.setOnClickListener {
-            startActivity(Intent(this, FeatureThreeActivity::class.java))
+            val intent = Intent()
+            intent.setClassName(this, QuadrantConstants.FEATURE_THREE_ACTIVITY)
+            startActivity(intent)
         }
 
         btnShowEmployee.setOnClickListener {
